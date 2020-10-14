@@ -84,11 +84,11 @@ class Database {
 
 	executeRequest(collectionName, parameters, callback) {
 		if (!this.checkRequestValidity(parameters)) {
-			return new Promise.reject(new DatabaseError("Mongo request is invalid."));
+			return Promise.reject(new DatabaseError("Mongo request is invalid."));
 		}
 		let collection = this.getCollection(collectionName);
 		if (collection == undefined) {
-			return new Promise.reject(new DatabaseError("Collection doesn't exists."));
+			return Promise.reject(new DatabaseError("Collection doesn't exists."));
 		}
 		return callback(collection, parameters);
 	}
