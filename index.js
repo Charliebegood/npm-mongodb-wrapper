@@ -94,7 +94,7 @@ class Database {
 	}
 
 	insertInCollection(collectionName, data) {
-		return this.executeRequest(collectionName, [data], function(collection, parameters) {
+		return this.executeRequest(collectionName, Array.isArray(data) ? data : [data], function(collection, parameters) {
 			return collection.insertOne(parameters[0]);
 		});
 	}
@@ -106,13 +106,13 @@ class Database {
 	}
 
 	findOneInCollection(collectionName, query) {
-		return this.executeRequest(collectionName, [query], function(collection, parameters) {
+		return this.executeRequest(collectionName, Array.isArray(query) ? query : [query], function(collection, parameters) {
 			return collection.findOne(parameters[0]);
 		});
 	}
 
 	findInCollection(collectionName, query) {
-		return this.executeRequest(collectionName, [query], function(collection, parameters) {
+		return this.executeRequest(collectionName, Array.isArray(query) ? query : [query], function(collection, parameters) {
 			return collection.find(parameters[0]).toArray();
 		});
 	}
@@ -124,13 +124,13 @@ class Database {
 	}
 
 	removeOneInCollection(collectionName, query) {
-		return this.executeRequest(collectionName, [query], function(collection, parameters) {
+		return this.executeRequest(collectionName, Array.isArray(query) ? query : [query], function(collection, parameters) {
 			return collection.deleteOne(parameters[0]);
 		});
 	}
 
 	removeInCollection(collectionName, query) {
-		return this.executeRequest(collectionName, [query], function(collection, parameters) {
+		return this.executeRequest(collectionName, Array.isArray(query) ? query : [query], function(collection, parameters) {
 			return collection.deleteMany(parameters[0]);
 		});
 	}
