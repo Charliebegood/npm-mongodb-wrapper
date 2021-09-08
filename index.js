@@ -152,6 +152,12 @@ class Database {
 			return collection.findOneAndUpdate(parameters[0], parameters[1]);
 		});
 	}
+
+	findSortSkipLimitInCollection(collectionName, query, sort, skip, limit) {
+		return this.executeRequest(collectionName, [query, sort, skip, limit], function(collection, parameters) {
+			return collection.find(parameters[0]).sort(parameters[1]).skip(parameters[2]).limit(parameters[3]).toArray();
+		});
+	}
 }
 
 let database = new Database();

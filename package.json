@@ -1,6 +1,6 @@
 {
   "name": "npm-mongodb-wrapper",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Wrapper for MongoDB.",
   "main": "index.js",
   "scripts": {
