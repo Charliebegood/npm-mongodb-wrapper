@@ -99,6 +99,12 @@ class Database {
 		});
 	}
 
+	insertManyInCollection(collectionName, data) {
+		return this.executeRequest(collectionName, [data], function (collection, parameters) {
+			return collection.insertMany(parameters[0]);
+		});
+	}
+
 	distinctInCollection(collectionName, field, query) {
 		return this.executeRequest(collectionName, [field, query], function(collection, parameters) {
 			return collection.distinct(parameters[0], parameters[1]);
